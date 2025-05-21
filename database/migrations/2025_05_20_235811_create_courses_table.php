@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('summary')->nullable();
             $table->text('description');
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(0);
             $table->string('image_path')->nullable();
             $table->string('video_path')->nullable();
             $table->text('welcome_message')->nullable();

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CourseStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
@@ -21,6 +22,10 @@ class Course extends Model
         'welcome_message',
         'goodbye_message',
         'observations',
+    ];
+
+    protected $casts = [
+        'status' => CourseStatus::class,
     ];
 
     public function teacher()
