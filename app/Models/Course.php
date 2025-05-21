@@ -12,7 +12,7 @@ class Course extends Model
         'category_id',
         'level_id',
         'price_id',
-        'name',
+        'title',
         'slug',
         'summary',
         'description',

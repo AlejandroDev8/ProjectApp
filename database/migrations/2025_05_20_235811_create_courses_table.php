@@ -17,10 +17,10 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('level_id')->constrained()->onDelete('cascade');
             $table->foreignId('price_id')->constrained()->onDelete('cascade');
-            $table->string('name');
+            $table->string('title');
             $table->string('slug')->unique();
             $table->text('summary')->nullable();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('status')->default(0);
             $table->string('image_path')->nullable();
             $table->string('video_path')->nullable();

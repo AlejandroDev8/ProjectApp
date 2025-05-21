@@ -12,15 +12,16 @@
                 <h2 class="text-2xl uppercase text-center mb-4">
                     Complete the form below to create a new course.
                 </h2>
+                <x-validation-errors class="mb-4" />
                 <div class="mb-4">
                     <x-label for="title" class="text-lg mb-2" :value="__('Course Title')" />
                     <x-input id="title" type="text" name="title" class="w-full" placeholder="Course Title"
-                        required value="{{ old('title') }}" />
+                        value="{{ old('title') }}" />
                 </div>
                 <div class="mb-4">
                     <x-label for="slug" class="text-lg mb-2" :value="__('Course Slug')" />
                     <x-input id="slug" type="text" name="slug" class="w-full" placeholder="Course Slug"
-                        required value="{{ old('slug') }}" />
+                        value="{{ old('slug') }}" />
                 </div>
                 <div class="grid grid-cols-3 gap-4">
                     <div>
@@ -29,7 +30,8 @@
                             class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                             <option value="" disabled selected>Select Category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">@selected(old('category_id') == $category->id){{ $category->name }}
+                                <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
+                                    {{ $category->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -40,7 +42,7 @@
                             class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                             <option value="" disabled selected>Select Level</option>
                             @foreach ($levels as $level)
-                                <option value="{{ $level->id }}">@selected(old('level_id') == $level->id){{ $level->name }}
+                                <option value="{{ $level->id }}" @selected(old('level_id') == $level->id)>{{ $level->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -51,8 +53,7 @@
                             class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                             <option value="" disabled selected>Select Price</option>
                             @foreach ($prices as $price)
-                                <option value="{{ $price->id }}">
-                                    @selected(old('price_id') == $price->id)
+                                <option value="{{ $price->id }}" @selected(old('price_id') == $price->id)>
                                     @if ($price->price == 0)
                                         Free
                                     @else
