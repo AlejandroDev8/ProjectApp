@@ -16,7 +16,7 @@
                 <div class="mb-4">
                     <x-label for="title" class="text-lg mb-2" :value="__('Course Title')" />
                     <x-input id="title" type="text" name="title" class="w-full" placeholder="Course Title"
-                        value="{{ old('title') }}" />
+                        value="{{ old('title') }}" oninput="string_to_slug(this.value, '#slug')" />
                 </div>
                 <div class="mb-4">
                     <x-label for="slug" class="text-lg mb-2" :value="__('Course Slug')" />
