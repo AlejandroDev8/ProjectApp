@@ -1,7 +1,18 @@
 <?php
 
+use App\Http\Controllers\Instructor\CourseController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-  return view('instructor.dashboard');
-})->name('dashboard');
+/** 
+ *Route::get('/', function () {
+ *  return view('instructor.dashboard');
+ *  })->name('dashboard');
+ */
+
+Route::redirect('/', '/instructor/courses')->name('home');
+
+/**
+ * Course Routes
+ */
+
+Route::resource('courses', CourseController::class);
