@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Enums\CourseStatus;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Course extends Model
 {
@@ -27,6 +29,15 @@ class Course extends Model
     protected $casts = [
         'status' => CourseStatus::class,
     ];
+
+    protected function image(): Attribute
+    {
+        return new Attribute(
+            get: function () {
+                return $this->image_path ? Storage::url($this->image_path) : null;
+            }
+        );
+    }
 
     public function teacher()
     {
