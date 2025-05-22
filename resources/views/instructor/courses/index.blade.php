@@ -10,7 +10,7 @@
                 Course</a>
         </div>
         <ul>
-            @foreach ($courses as $course)
+            @forelse ($courses as $course)
                 <li class="bg-white rounded-lg shadow-lg overflow-hidden">
                     <a href="{{ route('instructor.courses.edit', $course) }}" class="md:flex">
                         <figure class="flex-shrink-0">
@@ -84,7 +84,18 @@
                         </div>
                     </a>
                 </li>
-            @endforeach
-        </ul>
-    </x-container>
-</x-instructor-layout>
+                @empty
+                    <li class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="py-4 px-8 flex justify-between">
+                            <h1 class="text-lg font-bold text-gray-900">
+                                No courses available
+                            </h1>
+                            <p class="text-sm font-bold">
+                                Crate a course to get started
+                            </p>
+                        </div>
+                    </li>
+                @endforelse
+            </ul>
+        </x-container>
+    </x-instructor-layout>
