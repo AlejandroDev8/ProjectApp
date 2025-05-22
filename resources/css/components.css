@@ -13,3 +13,7 @@
 .btn-green {
   @apply bg-green-500 text-white hover:bg-green-700;
 }
+
+.card {
+  @apply bg-white rounded-lg shadow-lg overflow-hidden p-6;
+}
