@@ -23,7 +23,7 @@
                     <x-input id="slug" type="text" name="slug" class="w-full" placeholder="Course Slug"
                         value="{{ old('slug') }}" />
                 </div>
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                         <x-label for="category" class="text-lg mb-2" :value="__('Category')" />
                         <select id="category" name="category_id"
