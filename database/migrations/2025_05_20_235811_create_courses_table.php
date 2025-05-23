@@ -27,6 +27,7 @@ return new class extends Migration
             $table->text('welcome_message')->nullable();
             $table->text('goodbye_message')->nullable();
             $table->text('observations')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }
