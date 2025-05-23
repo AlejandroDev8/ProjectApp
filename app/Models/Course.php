@@ -24,17 +24,19 @@ class Course extends Model
         'welcome_message',
         'goodbye_message',
         'observations',
+        'published_at',
     ];
 
     protected $casts = [
         'status' => CourseStatus::class,
+        'published_at' => 'datetime',
     ];
 
     protected function image(): Attribute
     {
         return new Attribute(
             get: function () {
-                return $this->image_path ? Storage::url($this->image_path) : null;
+                return $this->image_path ? Storage::url($this->image_path) : 'https://as2.ftcdn.net/v2/jpg/05/97/47/95/1000_F_597479556_7bbQ7t4Z8k3xbAloHFHVdZIizWK1PdOo.jpg';
             }
         );
     }
