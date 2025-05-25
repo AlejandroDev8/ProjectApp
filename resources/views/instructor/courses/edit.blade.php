@@ -46,8 +46,12 @@
                             </div>
                         @endempty
                         <div class="mb-4">
+                            <x-label for="summary" :value="__('Course Summary')" />
+                            <textarea id="summary" class="block mt-4 w-full" name="summary" rows="5" placeholder="Course Summary">{{ old('summary', $course->summary) }}</textarea>
+                        </div>
+                        <div class="mb-4">
                             <x-label for="description" :value="__('Course Description')" />
-                            <textarea id="description" class="block mt-4 w-full" name="description" rows="5" placeholder="Course Description">{{ old('description', $course->description) }}</textarea>
+                            <textarea id="editor" class="block mt-4 w-full" name="description" rows="5" placeholder="Course Description">{{ old('description', $course->description) }}</textarea>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="mb-4">
@@ -128,4 +132,12 @@
             </div>
         </div>
     </x-container>
+    @push('js')
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+        <script>
+            ClassicEditor.create(document.querySelector('#editor')).cath(error => {
+                console.log(error)
+            });
+        </script>
+    @endpush
 </x-instructor-layout>
