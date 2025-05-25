@@ -35,11 +35,12 @@ class Course extends Model
     protected function image(): Attribute
     {
         return new Attribute(
-            get: function () {
-                return $this->image_path ? Storage::url($this->image_path) : 'https://as2.ftcdn.net/v2/jpg/05/97/47/95/1000_F_597479556_7bbQ7t4Z8k3xbAloHFHVdZIizWK1PdOo.jpg';
-            }
+            get: fn() => $this->image_path
+                ? Storage::url($this->image_path)
+                : 'https://as2.ftcdn.net/v2/jpg/05/97/47/95/1000_F_597479556_7bbQ7t4Z8k3xbAloHFHVdZIizWK1PdOo.jpg',
         );
     }
+
 
     public function teacher()
     {

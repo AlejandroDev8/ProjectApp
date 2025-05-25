@@ -102,7 +102,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <figure>
                                     <img src="{{ $course->image }}" alt="Course Image"
-                                        class="w-full aspect-video object-cover object-center">
+                                        class="w-full aspect-video object-cover object-center" id="course-image">
                                 </figure>
                                 <div>
                                     <p class="text-gray-500 mb-2">
@@ -117,7 +117,8 @@
                                             <i class="fas fa-upload"></i>
                                             Upload Image
                                         </span>
-                                        <input type="file" name="image" class="hidden md:block" accept="image/*">
+                                        <input type="file" name="image" class="hidden md:block" accept="image/*"
+                                            onchange="imagePreview(event, '#course-image')">
                                     </label>
                                     <div class="flex md:justify-end mt-4">
                                         <x-button class="mt-4">
