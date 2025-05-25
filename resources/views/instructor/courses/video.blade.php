@@ -5,32 +5,27 @@
         </h2>
     </x-slot>
     <x-container class="py-8">
-        <div class="grid lg:grid-cols-5 grid-cols-1 gap-6">
-            <aside class="col-span-1">
-                <h1 class="font-semibold text-xl mb-4">
-                    Course Edition
-                </h1>
-                <nav>
-                    <ul>
-                        <li class="border-l-4 border-indigo-400 pl-3">
-                            <a href="{{ route('instructor.courses.edit', $course) }}"
-                                class="text-gray-600 hover:text-gray-900 font-semibold">
-                                Course Information
-                            </a>
-                        </li>
-                        <li class="border-l-4 border-transparent pl-3">
-                            <a href="{{ route('instructor.courses.video', $course) }}"
-                                class="text-gray-600 hover:text-gray-900 font-semibold">
-                                Promotional Video
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
-            <div class="lg:col-span-4 grid-cols-1">
-
-            </div>
-        </div>
+        <x-instructor.course-sidebar :course="$course">
+            <form action="{{ route('instructor.courses.video', $course) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <p class="text-2xl font-semibold">
+                    Promotional Video
+                </p>
+                <hr class="mt-2 mb-2">
+                <x-validation-errors class="mb-4" />
+                <div class="mb-4">
+                    <x-label for="video" :value="__('Video URL')" />
+                    <x-input id="video" class="block mt-4 w-full" type="text" name="video"
+                        value="{{ old('video', $course->video) }}" placeholder="Video URL" />
+                </div>
+                <div class="mb-4">
+                    <x-button>
+                        {{ __('Save') }}
+                    </x-button>
+                </div>
+            </form>
+        </x-instructor.course-sidebar>
     </x-container>
 
 </x-instructor-layout>
