@@ -45,7 +45,7 @@
                                     value="{{ old('slug', $course->title) }}" placeholder="Course Slug" />
                             </div>
                         @endempty
-                        <div class="mb-4">
+                        <div class="mb-4 ckeditor">
                             <x-label for="summary" :value="__('Course Summary')" />
                             <textarea id="summary" class="block mt-4 w-full" name="summary" rows="5" placeholder="Course Summary">{{ old('summary', $course->summary) }}</textarea>
                         </div>
