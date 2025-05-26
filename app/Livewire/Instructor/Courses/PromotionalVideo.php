@@ -23,7 +23,7 @@ class PromotionalVideo extends Component
 
         session()->flash('flash.banner', 'Course updated successfully.');
 
-        return redirect()->route('instructor.courses.video', $this->course);
+        return $this->redirectRoute('instructor.courses.video', $this->course, true, true);
     }
 
     public function render()
