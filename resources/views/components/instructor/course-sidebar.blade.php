@@ -14,6 +14,12 @@
             'icon' => 'fa-solid fa-video',
             'active' => request()->routeIs('instructor.courses.video'),
         ],
+        [
+            'name' => 'Course Goals',
+            'url' => route('instructor.courses.goals', $course),
+            'icon' => 'fa-solid fa-bullseye',
+            'active' => request()->routeIs('instructor.courses.goals'),
+        ],
     ];
 @endphp
 
