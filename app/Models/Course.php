@@ -41,7 +41,6 @@ class Course extends Model
         );
     }
 
-
     public function teacher()
     {
         return $this->belongsTo(User::class);
@@ -60,5 +59,10 @@ class Course extends Model
     public function price()
     {
         return $this->belongsTo(Price::class);
+    }
+
+    public function goals()
+    {
+        return $this->hasMany(Goal::class);
     }
 }
