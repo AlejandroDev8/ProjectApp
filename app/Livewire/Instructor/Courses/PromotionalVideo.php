@@ -20,6 +20,10 @@ class PromotionalVideo extends Component
         $this->validate();
         $this->course->video_path = $this->video->store('courses/promotional-videos', 'public');
         $this->course->save();
+
+        session()->flash('flash.banner', 'Course updated successfully.');
+
+        return redirect()->route('instructor.courses.video', $this->course);
     }
 
     public function render()
