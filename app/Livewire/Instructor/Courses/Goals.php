@@ -42,6 +42,12 @@ class Goals extends Component
         foreach ($this->goals as $goal) {
             Goal::find($goal['id'])->update(['title' => $goal['title']]);
         }
+
+        $this->dispatch('alert', [
+            'icon' => 'success',
+            'title' => 'Goals updated successfully!',
+            'text' => 'Your course goals have been updated.',
+        ]);
     }
 
     public function render()
