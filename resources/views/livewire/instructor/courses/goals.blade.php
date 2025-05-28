@@ -6,7 +6,7 @@
                     <x-input wire:model="goals.{{ $index }}.title" class="flex-1 rounded-r-none" />
                     <div class="border border-l-0 border-gray-300">
                         <div class="flex items-center h-full">
-                            <button class="px-2 hover:text-red-600">
+                            <button class="px-2 hover:text-red-600" onclick="destroyGoal({{ $goal['id'] }}) ">
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </div>
@@ -38,4 +38,30 @@
             </div>
         </div>
     </form>
+
+    @push('js')
+        <script>
+            destroyGoal = (id) => {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+
+                        @this.call('destroy', id);
+                    }
+                });
+            }
+        </script>
+    @endpush
 </div>
