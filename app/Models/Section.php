@@ -11,4 +11,9 @@ class Section extends Model
         'course_id',
         'position',
     ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }
