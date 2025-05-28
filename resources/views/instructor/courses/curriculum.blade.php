@@ -7,7 +7,7 @@
 
     <x-container class="py-8">
         <x-instructor.course-sidebar :course="$course">
-
+            @livewire('instructor.courses.manage-section', ['course' => $course], key('manage-section'))
         </x-instructor.course-sidebar>
     </x-container>
 </x-instructor-layout>
