@@ -5,8 +5,8 @@
                 <div class="flex">
                     <x-input wire:model="goals.{{ $index }}.title" class="flex-1 rounded-r-none" />
                     <div class="flex items-center border border-l-0 border-gray-300 divide-x divide-gray-300 rounded-r">
-                        <button class="px-2 hover:text-red-600" onclick="destroyGoal({{ $goal['id'] }}) ">
-                            <i class="far fa-trash-alt"></i>
+                        <button class="px-2" onclick="destroyGoal({{ $goal['id'] }}) ">
+                            <i class="far fa-trash-alt text-red-600 hover:text-red-800"></i>
                         </button>
                         <div class="px-2 cursor-move">
                             <i class="fas fa-bars"></i>
