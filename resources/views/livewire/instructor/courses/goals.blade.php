@@ -1,14 +1,15 @@
 <div>
-    <ul class="mb-4 space-y-3">
+    <ul class="mb-4 space-y-3" id="goals-list">
         @foreach ($goals as $index => $goal)
             <li wire:key="goal-{{ $goal['id'] }}"">
                 <div class="flex">
                     <x-input wire:model="goals.{{ $index }}.title" class="flex-1 rounded-r-none" />
-                    <div class="border border-l-0 border-gray-300">
-                        <div class="flex items-center h-full">
-                            <button class="px-2 hover:text-red-600" onclick="destroyGoal({{ $goal['id'] }}) ">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
+                    <div class="flex items-center border border-l-0 border-gray-300 divide-x divide-gray-300 rounded-r">
+                        <button class="px-2 hover:text-red-600" onclick="destroyGoal({{ $goal['id'] }}) ">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                        <div class="px-2 cursor-move">
+                            <i class="fas fa-bars"></i>
                         </div>
                     </div>
                 </div>
@@ -40,6 +41,14 @@
     </form>
 
     @push('js')
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+        <script>
+            const goalsList = document.getElementById('goals-list');
+            new Sortable(goalsList, {
+                animation: 150,
+                ghostClass: 'blue-background-class'
+            });
+        </script>
         <script>
             destroyGoal = (id) => {
                 Swal.fire({
