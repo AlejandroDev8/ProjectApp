@@ -2,15 +2,28 @@
     <ul class="mb-4 space-y-3">
         @foreach ($goals as $index => $goal)
             <li wire:key="goal-{{ $goal['id'] }}"">
-                <x-input wire:model="goals.{{ $index }}.title" class="w-full" />
+                <div class="flex">
+                    <x-input wire:model="goals.{{ $index }}.title" class="flex-1 rounded-r-none" />
+                    <div class="border border-l-0 border-gray-300">
+                        <div class="flex items-center h-full">
+                            <button class="px-2 hover:text-red-600">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </li>
         @endforeach
     </ul>
 
     <div class="flex justify-end mb-8">
-        <x-button wire:click="update">
-            {{ __('Update') }}
-        </x-button>
+        @if (count($goals) > 0)
+            <x-button wire:click="update">
+                {{ __('Update') }}
+            </x-button>
+        @else
+            <span class="text-gray-500">{{ __('No goals yet. Please add one.') }}</span>
+        @endif
     </div>
 
     <form wire:submit.prevent="store">
