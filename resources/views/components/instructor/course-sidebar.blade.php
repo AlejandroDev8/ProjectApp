@@ -20,6 +20,12 @@
             'icon' => 'fa-solid fa-bullseye',
             'active' => request()->routeIs('instructor.courses.goals'),
         ],
+        [
+            'name' => 'Requirements',
+            'url' => route('instructor.courses.requirements', $course),
+            'icon' => 'fa-solid fa-list-check',
+            'active' => request()->routeIs('instructor.courses.requirements'),
+        ],
     ];
 @endphp
 
