@@ -17,7 +17,7 @@
         @endforeach
     </ul>
     <div class="flex justify-end mb-8">
-        @if (count($requirements) < 0)
+        @if (count($requirements) > 0)
             <x-button wire:click="update">
                 {{ __('Update') }}
             </x-button>
