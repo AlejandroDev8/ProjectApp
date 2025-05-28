@@ -12,5 +12,6 @@ class Goal extends Model
     protected $fillable = [
         'title',
         'course_id',
+        'position',
     ];
 }

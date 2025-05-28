@@ -1,7 +1,7 @@
 <div>
     <ul class="mb-4 space-y-3" id="goals-list">
         @foreach ($goals as $index => $goal)
-            <li wire:key="goal-{{ $goal['id'] }}"">
+            <li wire:key="goal-{{ $goal['id'] }}" data-id="{{ $goal['id'] }}">
                 <div class="flex">
                     <x-input wire:model="goals.{{ $index }}.title" class="flex-1 rounded-r-none" />
                     <div class="flex items-center border border-l-0 border-gray-300 divide-x divide-gray-300 rounded-r">
@@ -46,7 +46,12 @@
             const goalsList = document.getElementById('goals-list');
             new Sortable(goalsList, {
                 animation: 150,
-                ghostClass: 'blue-background-class'
+                ghostClass: 'blue-background-class',
+                store: {
+                    set: (sortable) => {
+                        @this.call('sortGoals', sortable.toArray())
+                    }
+                }
             });
         </script>
         <script>

@@ -17,7 +17,7 @@ class Goals extends Component
 
     public function mount($course)
     {
-        $this->goals = Goal::where('course_id', $course->id)->get()->toArray();
+        $this->goals = Goal::where('course_id', $this->course->id)->orderBy('position', 'asc')->get()->toArray();
     }
 
     public function store()
@@ -28,7 +28,7 @@ class Goals extends Component
             'title' => $this->title,
         ]);
 
-        $this->goals = Goal::where('course_id', $this->course->id)->get()->toArray();
+        $this->goals = Goal::where('course_id', $this->course->id)->orderBy('position', 'asc')->get()->toArray();
 
         $this->reset('title');
     }
@@ -54,7 +54,16 @@ class Goals extends Component
     {
         Goal::find($goalId)->delete();
 
-        $this->goals = Goal::where('course_id', $this->course->id)->get()->toArray();
+        $this->goals = Goal::where('course_id', $this->course->id)->orderBy('position', 'asc')->get()->toArray();
+    }
+
+    public function sortGoals($data)
+    {
+        foreach ($data as $index => $goalId) {
+            Goal::find($goalId)->update(['position' => $index + 1]);
+        }
+
+        $this->goals = Goal::where('course_id', $this->course->id)->orderBy('position', 'asc')->get()->toArray();
     }
 
     public function render()
