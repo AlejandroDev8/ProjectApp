@@ -27,7 +27,7 @@
             'active' => request()->routeIs('instructor.courses.requirements'),
         ],
         [
-            'name' => 'Course Sections',
+            'name' => 'Course Curriculum',
             'url' => route('instructor.courses.curriculum', $course),
             'icon' => 'fa-solid fa-book',
             'active' => request()->routeIs('instructor.courses.curriculum'),
