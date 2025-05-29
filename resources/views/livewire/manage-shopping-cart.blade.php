@@ -41,7 +41,7 @@
                     </p>
                 </div>
                 <div class="mt-4">
-                    <a href="" class="btn btn-blue w-full uppercase text-center block">
+                    <a href="{{ route('checkout.index') }}" class="btn btn-blue w-full uppercase text-center block">
                         Check out
                     </a>
                 </div>
