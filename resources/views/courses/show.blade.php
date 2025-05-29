@@ -28,9 +28,11 @@
                         <button class="btn btn-blue w-full mb-2 uppercase">
                             Add to Cart
                         </button>
-                        <button class="btn btn-green w-full uppercase">
-                            Buy Now
-                        </button>
+                        <a href="{{ route('cart.index') }}">
+                            <button class="btn btn-green w-full uppercase">
+                                Buy Now
+                            </button>
+                        </a>
                     </div>
                     <div>
                         <p class="font-semibold text-lg mb-1">
