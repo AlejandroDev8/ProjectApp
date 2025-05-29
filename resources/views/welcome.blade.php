@@ -10,12 +10,12 @@
             </h1>
             <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li>
-                    <a href="">
+                    <a href="#">
                         <img src="https://codersfree.com/img/servicios/cursos.jpeg" alt="Courses Image"
                             class="aspect-video object-center obeject-cover rounded-lg">
                     </a>
                     <h1 class="text-xl text-center font-semibold mb-2 mt-2">
-                        <a href="">
+                        <a href="#">
                             Courses Online
                         </a>
                     </h1>
@@ -26,12 +26,12 @@
                     </p>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="#">
                         <img src="https://codersfree.com/img/servicios/desarrollo.jpeg" alt="Courses Image"
                             class="aspect-video object-center obeject-cover rounded-lg">
                     </a>
                     <h1 class="text-xl text-center font-semibold mb-2 mt-2">
-                        <a href="">
+                        <a href="#">
                             Web Development
                         </a>
                     </h1>
@@ -42,12 +42,12 @@
                     </p>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="#">
                         <img src="https://codersfree.com/img/servicios/asesorias.jpg" alt="Courses Image"
                             class="aspect-video object-center obeject-cover rounded-lg">
                     </a>
                     <h1 class="text-xl text-center font-semibold mb-2 mt-2">
-                        <a href="">
+                        <a href="#">
                             Online Advisories
                         </a>
                     </h1>
@@ -58,12 +58,12 @@
                     </p>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="#">
                         <img src="https://codersfree.com/img/servicios/blog.jpeg" alt="Courses Image"
                             class="aspect-video object-center obeject-cover rounded-lg">
                     </a>
                     <h1 class="text-xl text-center font-semibold mb-2 mt-2">
-                        <a href="">
+                        <a href="#">
                             Blog
                         </a>
                     </h1>
@@ -91,7 +91,7 @@
                             </figure>
                             <div class="px-6 py-4 pb-5">
                                 <h2 class="line-clamp-2 text-lg leading-5 min-h-[42px]">
-                                    <a href="">
+                                    <a href="{{ route('courses.show', $course) }}">
                                         {{ $course->title }}
                                     </a>
                                 </h2>
@@ -110,7 +110,7 @@
                                         </span>
                                     @endif
                                 </p>
-                                <a href="">
+                                <a href="{{ route('courses.show', $course) }}">
                                     <button
                                         class="block w-full text-center mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
                                         View Course

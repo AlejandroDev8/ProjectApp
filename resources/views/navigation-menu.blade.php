@@ -1,9 +1,9 @@
 @php
     $links = [
         [
-            'name' => 'Dashboard',
-            'route' => '#',
-            'active' => true,
+            'name' => 'Courses',
+            'route' => route('courses.index'),
+            'active' => request()->routeIs('courses.*'),
         ],
     ];
 @endphp
