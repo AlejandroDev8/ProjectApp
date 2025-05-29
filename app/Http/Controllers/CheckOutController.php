@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -78,5 +79,27 @@ class CheckOutController extends Controller
             ]);
 
         return $response['access_token'];
+    }
+
+    public function capturePaypalOrder(Request $request)
+    {
+        $orderID = $request->orderID;
+
+        $access_token = $this->generateAccesToken();
+
+        $url = config('services.paypal.url') . "/v2/checkout/orders/{$orderID}/capture";
+
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => "Bearer " . $access_token,
+        ])->withOptions([
+            'verify' => storage_path('certs/cacert.pem'), // <== agregar esto
+        ])->post($url, [
+            'intent' => 'CAPTURE',
+        ])->json();
+
+        if (!isset($response['status']) || $response['status'] !== 'COMPLETED') {
+            throw new Exception('Error al capturar el pago de PayPal: ' . json_encode($response));
+        }
     }
 }

@@ -63,6 +63,16 @@
                         });
                 },
                 onApprove(data) {
+                    return axios.post('{{ route('checkout.capturePaypalOrder') }}', {
+                            orderID: data.orderID
+                        })
+                        .then(function(res) {
+                            alert('Payment successful!');
+                        })
+                        .catch(function(err) {
+                            console.error('Error capturing PayPal order:', err);
+                            alert('Payment failed. Please try again.');
+                        });
 
                 }
             }).render('#paypal-button-container');
