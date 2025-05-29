@@ -69,7 +69,43 @@
                 </div>
             </aside>
             <div class="col-span-3">
-
+                <div class="mb-12">
+                    <x-input class="w-full" placeholder="Search Course"></x-input>
+                </div>
+                <ul class="space-y-4">
+                    @forelse ($courses as $course)
+                        <li>
+                            <a href="{{ route('courses.show', $course->id) }}" class="flex w-full">
+                                <figure>
+                                    <img src="{{ $course->image }}" alt="{{ $course->title }}"
+                                        class="w-full h-48 object-cover rounded-lg shadow-md mb-4">
+                                </figure>
+                                <div class="flex-1 ml-4">
+                                    <h3 class="text-lg mb-1">{{ $course->title }}</h3>
+                                    <p class="text-sm text-gray-600">
+                                        {{ $course->summary }}
+                                    </p>
+                                    <p class="text-sm text-gray-500 mt-2">
+                                        <span class="font-semibold">Category:</span> {{ $course->category->name }}
+                                    </p>
+                                    <p class="text-sm text-gray-500">
+                                        <span class="font-semibold">Level:</span> {{ $course->level->name }}
+                                    </p>
+                                    <p class="text-sm text-gray-500">
+                                        <span class="font-semibold">Price:</span>
+                                        @if ($course->price->value == 0)
+                                            Free
+                                        @else
+                                            ${{ number_format($course->price, 2) }}
+                                        @endif
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    @empty
+                        <li>No courses found.</li>
+                    @endforelse
+                </ul>
             </div>
         </div>
     </x-container>

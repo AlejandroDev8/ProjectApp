@@ -26,6 +26,7 @@ class CourseFactory extends Factory
             'price_id' => Price::all()->random()->id,
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
+            'summary' => $this->faker->paragraph(),
             'status' => 2,
             'image_path' => $this->faker->image('public/storage/courses/images', 640, 480, null, true),
         ];

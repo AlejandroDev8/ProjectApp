@@ -3,11 +3,15 @@
 namespace App\Livewire;
 
 use App\Models\Category;
+use App\Models\Course;
 use App\Models\Level;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class CourseFilter extends Component
 {
+    use WithPagination;
+
     public $categories;
     public $levels;
 
@@ -19,6 +23,8 @@ class CourseFilter extends Component
 
     public function render()
     {
-        return view('livewire.course-filter');
+        $courses = Course::where('status', 2)->paginate(10);
+
+        return view('livewire.course-filter', compact('courses'));
     }
 }
