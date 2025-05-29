@@ -20,3 +20,6 @@ Route::get('cart', [CartController::class, 'index'])
 
 Route::get('checkout', [CheckOutController::class, 'index'])
     ->name('checkout.index');
+
+Route::post('checkout/createPaypalOrder', [CheckOutController::class, 'createPaypalOrder'])
+    ->name('checkout.createPaypalOrder');
