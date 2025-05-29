@@ -8,7 +8,7 @@
             <h1 class="text-2xl uppercase font-semibold text-center mb-8">
                 Welcome to the Laravel Starter
             </h1>
-            <ul class="grid grid-cols-4 gap-6">
+            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li>
                     <a href="">
                         <img src="https://codersfree.com/img/servicios/cursos.jpeg" alt="Courses Image"
@@ -81,7 +81,7 @@
             <h1 class="text-2xl font-semibold text-center uppercase mb-8">
                 Our Courses
             </h1>
-            <ul class="grid grid-cols-4 gap-6">
+            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach ($courses as $course)
                     <li>
                         <div class=" bg-white rounded-lg overflow-hidden">
